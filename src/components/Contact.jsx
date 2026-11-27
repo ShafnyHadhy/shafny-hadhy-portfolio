@@ -4,8 +4,8 @@ import { Reveal, Section, Arrow } from './ui';
 const emailAddress = 'shafnyhadhy@gmail.com';
 
 const roles = [
-    'Junior Full-Stack Developer',
     'Associate Software Engineer',
+    'Junior Full-Stack Developer',
     'Associate Backend Engineer',
     'Software Engineer Intern',
 ];
@@ -44,9 +44,10 @@ const Contact = () => {
     return (
         <Section id="contact" label="Contact">
             <Reveal>
-                <h3 className="max-w-[40rem] text-balance text-[32px] md:text-[44px]">Open to entry-level engineering roles.</h3>
+                <h3 className="max-w-[40rem] text-balance text-[32px] md:text-[44px]">Open to software engineering opportunities.</h3>
                 <p className="mt-5 max-w-[36rem] text-[16px]">
-                    Based in Colombo, Sri Lanka. Email is the best way to reach me; my resume and code are linked below.
+                    Based in Colombo, Sri Lanka. Email is the best way to reach me—my resume, GitHub, and LinkedIn are
+                    linked below.
                 </p>
 
                 <ul className="mt-8 grid max-w-[40rem] grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-2">

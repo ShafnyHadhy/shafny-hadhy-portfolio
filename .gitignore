@@ -23,6 +23,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
 # design checker output
 .taste-skill/

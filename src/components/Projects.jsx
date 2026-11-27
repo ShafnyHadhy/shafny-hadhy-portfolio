@@ -59,21 +59,49 @@ const Row = ({ project, index, onOpen, onLoad = false }) => (
     </Reveal>
 );
 
+const renderInline = (text) =>
+    text.split(/\*\*(.*?)\*\*/g).map((part, j) =>
+        j % 2 === 1 ? (
+            <strong key={j} className="font-semibold text-ink">
+                {part}
+            </strong>
+        ) : (
+            part
+        )
+    );
+
 const Details = ({ text }) => (
-    <div className="space-y-3">
-        {text.split(/\n\s*\n/).map((para, i) => (
-            <p key={i} className="text-[15px] leading-[1.7] text-body">
-                {para.trim().split(/\*\*(.*?)\*\*/g).map((part, j) =>
-                    j % 2 === 1 ? (
-                        <strong key={j} className="font-semibold text-ink">
-                            {part}
-                        </strong>
-                    ) : (
-                        part
-                    )
-                )}
-            </p>
-        ))}
+    <div className="space-y-4">
+        {text.split(/\n\s*\n/).map((block, i) => {
+            const lines = block
+                .split('\n')
+                .map((l) => l.trim())
+                .filter(Boolean);
+            const bullets = lines.filter((l) => l.startsWith('- '));
+            const prose = lines.filter((l) => !l.startsWith('- '));
+
+            return (
+                <div key={i} className="space-y-2">
+                    {prose.map((line, k) => (
+                        <p key={k} className="text-[15px] leading-[1.7] text-body">
+                            {renderInline(line)}
+                        </p>
+                    ))}
+                    {bullets.length > 0 && (
+                        <ul className="space-y-2">
+                            {bullets.map((line, k) => (
+                                <li
+                                    key={k}
+                                    className="relative pl-5 text-[15px] leading-[1.65] text-body before:absolute before:left-0 before:top-[0.78em] before:h-px before:w-2.5 before:bg-faint"
+                                >
+                                    {renderInline(line.slice(2))}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            );
+        })}
     </div>
 );
 
@@ -134,7 +162,7 @@ const ProjectDialog = ({ project, onClose }) => {
                                 {project.screenshot && (
                                     <img
                                         src={project.screenshot}
-                                        alt={`${project.title} screenshot`}
+                                        alt={`${project.title} application interface screenshot`}
                                         width="1440"
                                         height="900"
                                         loading="lazy"
@@ -262,6 +290,7 @@ const Projects = ({ limit = 6, showViewMore = true, isFullPage = false }) => {
                             <span className="label text-faint sticky top-28">01 — {String(list.length).padStart(2, '0')}</span>
                         </div>
                         <div className="md:col-span-9">
+                            <h2 className="sr-only">Project list</h2>
                             <ul className="border-t border-line">
                                 {list.map((p, i) => (
                                     <Row key={`${filter}-${p.id}`} project={p} index={i} onOpen={setOpen} onLoad={true} />
