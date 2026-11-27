@@ -40,6 +40,38 @@ const AllProjects = () => {
   return <Projects isFullPage />;
 };
 
+const ROUTE_META = {
+  home: {
+    title: 'Shafny Hadhy | Associate Software Engineer & Full-Stack Developer',
+    description:
+      'Shafny Hadhy is an Associate Software Engineer in Colombo, Sri Lanka, building full-stack web apps with React, Next.js, Laravel, Node.js, and MySQL.',
+  },
+  projects: {
+    title: 'Projects | Shafny Hadhy — Associate Software Engineer & Full-Stack Developer',
+    description:
+      'Projects built by Shafny Hadhy across React, Next.js, Laravel, Node.js, PostgreSQL, MySQL, and mobile development.',
+  },
+};
+
+const setMetaContent = (selector, value) => {
+  document.querySelector(selector)?.setAttribute('content', value);
+};
+
+// Keep document title and route descriptions aligned during client-side navigation.
+const useRouteMeta = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const meta = pathname.startsWith('/projects') ? ROUTE_META.projects : ROUTE_META.home;
+    document.title = meta.title;
+    setMetaContent('meta[name="title"]', meta.title);
+    setMetaContent('meta[name="description"]', meta.description);
+    setMetaContent('meta[property="og:title"]', meta.title);
+    setMetaContent('meta[property="og:description"]', meta.description);
+    setMetaContent('meta[name="twitter:title"]', meta.title);
+    setMetaContent('meta[name="twitter:description"]', meta.description);
+  }, [pathname]);
+};
+
 // Smooth-scroll only for clicked in-page links; keyboard focus moves stay instant.
 const useSmoothHashLinks = () => {
   useEffect(() => {
@@ -60,6 +92,7 @@ const useSmoothHashLinks = () => {
 };
 
 function App() {
+  useRouteMeta();
   useSmoothHashLinks();
   return (
     <div className="flex min-h-screen flex-col">

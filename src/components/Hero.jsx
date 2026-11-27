@@ -46,14 +46,15 @@ const Hero = () => (
                     <Mask delay={0.08} className="text-lime text-[56px] leading-none md:text-[72px]">Developer.</Mask>
                 </span>
                 <span className="block text-grey text-[42px] leading-none md:text-[72px]">
-                    <Mask delay={0.16}>Building production systems.</Mask>
+                    <Mask delay={0.16}>Building web apps that solve real problems.</Mask>
                 </span>
             </h1>
 
             <Reveal onLoad delay={AFTER} duration={0.52} distance={12}>
                 <p className="mt-8 max-w-[38rem] text-[17px] md:text-[18px]">
-                    Associate Software Engineer based in Colombo, Sri Lanka. Currently building a full-stack EdTech
-                    product with Next.js, React, Laravel and MySQL. Focused on resilient APIs and clean, shippable UI.
+                    Associate Software Engineer in Colombo, Sri Lanka, working with React, Next.js, Laravel, and
+                    Node.js. I build frontend interfaces, backend APIs, and database-driven features for applications
+                    used in day-to-day workflows.
                 </p>
             </Reveal>
 
