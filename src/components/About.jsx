@@ -9,7 +9,7 @@ const About = () => (
             <div className="photo-frame h-[140px] w-[140px] shrink-0 overflow-hidden rounded-xl border border-line">
                 <img
                     src="/me-240.webp"
-                    alt="Shafny Hadhy"
+                    alt="Portrait of Shafny Hadhy"
                     width="140"
                     height="140"
                     loading="lazy"
@@ -19,16 +19,16 @@ const About = () => (
             <div className="max-w-[640px] space-y-5 text-[16px]">
                 <WordHighlight
                     className="text-[18px] leading-[1.6] md:text-[20px]"
-                    text="I am a Software Engineering undergraduate at SLIIT and an Associate Software Engineer, working across the stack: frontend interfaces on one side, backend architecture on the other."
+                    text="I am a Software Engineering undergraduate at SLIIT and an Associate Software Engineer working across the frontend and backend of web applications."
                 />
                 <p>
-                    My approach is grounded in pragmatism and continuous learning. Whether I am designing relational
-                    databases, building responsive components or deploying APIs, I focus on clean, maintainable code
-                    that solves real problems.
+                    Day to day, I build user interfaces, write backend business logic and REST APIs, and work with
+                    relational databases. I enjoy breaking down practical engineering problems into straightforward,
+                    maintainable code.
                 </p>
                 <p>
-                    I work best in collaborative teams, bringing problem-solving, adaptability and a drive for
-                    leadership to every team I join.
+                    I work closely with teammates through code reviews and technical discussions, and I am focused on
+                    strengthening my software engineering fundamentals through hands-on product work.
                 </p>
             </div>
         </Reveal>
